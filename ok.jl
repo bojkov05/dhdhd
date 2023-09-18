@@ -43,3 +43,52 @@ function Home(back::Array)
         move!(r,rever(s))
     end
 end
+
+function diagonal(r,u_r::Bool,u_l::Bool,d_r::Bool,d_l::Bool,mark::Bool)
+    c=[]
+    if u_r
+        while !isborder(r,Ost) || !isborder(r,Nord)
+            move!(r,Ost)
+            move!(r,Nord)
+            push!(c,Ost)
+            push!(c,Nord)
+            if mark
+                putmarker!(r)
+            end
+        end
+    end
+    if u_l
+        while !isborder(r,West) || !isborder(r,Nord)
+            move!(r,West)
+            move!(r,Nord)
+            push!(c,West)
+            push!(c,Nord)
+            if mark
+                putmarker!(r)
+            end
+        end
+    end
+    if d_r
+        while !isborder(r,Ost) || !isborder(r,Sud)
+            move!(r,Ost)
+            move!(r,Sud)
+            push!(c,Ost)
+            push!(c,Sud)
+            if mark
+                putmarker!(r)
+            end
+        end
+    end
+    if d_l
+        while !isborder(r,West) || !isborder(r,Sud)
+            move!(r,West)
+            move!(r,Sud)
+            push!(c,West)
+            push!(c,Sud)
+            if mark
+                putmarker!(r)
+            end
+        end
+    end
+    return c
+end
