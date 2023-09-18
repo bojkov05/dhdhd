@@ -1,6 +1,6 @@
 using HorizonSideRobots
 r=Robot(animate = true)
-back=[]
+
 function long(r,side::Array,mark::Bool)
     c=[]
     for s in side
@@ -14,8 +14,6 @@ function long(r,side::Array,mark::Bool)
     end
     return c
 end
-
-back=long(r,[Nord,Ost],true)
 
 function rever(side)
     if side == Nord
@@ -32,12 +30,16 @@ function rever(side)
     end
 end
 
+function masum(mas1::Array, mas2::Array)
+    for s in mas2
+        push!(mas1,s)
+    end
+    return mas1
+end
+
 function Home(back::Array)
     back=reverse(back)
     for s in back
-        print(rever(s))
         move!(r,rever(s))
     end
 end
-
-Home(back)
