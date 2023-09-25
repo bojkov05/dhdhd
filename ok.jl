@@ -92,3 +92,35 @@ function diagonal(r,u_r::Bool,u_l::Bool,d_r::Bool,d_l::Bool,mark::Bool)
     end
     return c
 end
+
+function elements(elem,mas::Array)
+    k=0
+    for i in 1:length(mas)
+        if mas[i]==elem
+            k+=1
+        end
+    end
+    return k
+end
+
+function try_move!(r,side)
+    num=0
+    f=true
+    while isborder(r,side) && f
+        if isborder(r,Sud)
+            f=false
+        else
+            move!(r,Sud)
+            num+=1
+        end
+    end
+    k=num
+    if f
+        move!(r,side)
+        move!(r,side)
+        for i in 1:num
+            move!(r,Nord)
+        end
+    end
+    return f,num>1
+end
