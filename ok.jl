@@ -117,10 +117,44 @@ function try_move!(r,side)
     k=num
     if f
         move!(r,side)
-        move!(r,side)
+        while isborder(r,Nord)
+            move!(r,side)
+        end
         for i in 1:num
             move!(r,Nord)
         end
     end
     return f,num>1
+end
+
+function task_9(r)
+    side=Ost
+    local i=0
+    local j=0
+    putmarker!(r)
+    while !isborder(r,side)
+        move!(r,side)
+        j+=1
+        if mod(j,2)==0
+            putmarker!(r)
+        end
+    end
+    while !isborder(r,Nord)
+        move!(r,Nord)
+        i+=1
+        if mod(i,2)!=0
+            side=West
+        else
+            side=Ost
+        end
+        local j=0
+        putmarker!(r)
+        while !isborder(r,side)
+            move!(r,side)
+            j+=1
+            if mod(j,2)==0
+                putmarker!(r)
+            end
+        end
+    end
 end
