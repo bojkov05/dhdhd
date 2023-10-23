@@ -167,3 +167,14 @@ function task_19(r,side)
         return task_19(r,side)
     end
 end
+
+function task_20(r,side,steps)
+    if isborder(r,side)
+        putmarker!(r)
+        num_steps(r,rever(side),steps)
+        return 1
+    else
+        move!(r,side)
+        return task_20(r,side,steps+1)
+    end
+end
