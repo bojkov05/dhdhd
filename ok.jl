@@ -200,7 +200,7 @@ function task_22(r,side,steps,f)
     if !f
         if isborder(r,side)
             f=true
-            return task_22(r,rever(side),steps,f)
+            return task_22(r,rever(side),steps*2,f)
         else
             return task_22(r,side,steps+1,f)
         end
