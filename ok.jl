@@ -158,3 +158,12 @@ function task_9(r)
         end
     end
 end
+
+function task_19(r,side)
+    if isborder(r,side)
+        return 0
+    else
+        move!(r,side)
+        return task_19(r,side)
+    end
+end
