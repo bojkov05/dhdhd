@@ -195,3 +195,25 @@ function task_21(r,side,steps)
         return 1
     end
 end
+
+function task_22(r,side,steps,f)
+    if !f
+        if isborder(r,side)
+            f=true
+            return task_22(r,rever(side),steps,f)
+        else
+            return task_22(r,side,steps+1,f)
+        end
+    else
+        if isborder(r,side) && steps == 0
+            return true
+        elseif isborder(r,side) && steps!=0
+            return false
+        elseif steps==0
+            return true
+        else
+            move!(r,side)
+            return task_22(r,side,steps-1,f)
+        end
+    end
+end
