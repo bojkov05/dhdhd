@@ -178,3 +178,20 @@ function task_20(r,side,steps)
         return task_20(r,side,steps+1)
     end
 end
+
+function task_21(r,side,steps)
+    side1=Nord
+    if side==Sud || side==Nord
+        side1=West
+    end
+    if isborder(r,side)
+        move!(r,side1)
+        return task_21(r,side,steps+1)
+    elseif steps>0
+        num_steps(r,side1,steps)
+        return 1
+    else
+        move!(r,side)
+        return 1
+    end
+end
