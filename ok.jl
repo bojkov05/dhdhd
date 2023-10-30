@@ -224,6 +224,7 @@ function simetr(r,side,steps,f)
             f=true
             return simetr(r,rever(side),div(steps,2),f)
         else
+            move!(r,side)
             return simetr(r,side,steps+1,f)
         end
     else
