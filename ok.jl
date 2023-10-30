@@ -202,6 +202,7 @@ function task_22(r,side,steps,f)
             f=true
             return task_22(r,rever(side),steps*2,f)
         else
+            move!(r,side)
             return task_22(r,side,steps+1,f)
         end
     else
