@@ -247,3 +247,26 @@ function task_23(r,side,steps,f)
     task_19(r,side)
     function
 end
+
+function task_24(r,side,steps,f)
+    if !f
+        if isborder(r,side)
+            f=true
+            return task_24(r,rever(side),div(steps,2),f)
+        else
+            move!(r,side)
+            return task_24(r,side,steps+1,f)
+        end
+    else
+        if isborder(r,side) && steps == 0
+            return true
+        elseif isborder(r,side) && steps!=0
+            return false
+        elseif steps==0
+            return true
+        else
+            move!(r,side)
+            return task_24(r,side,steps-1,f)
+        end
+    end
+end
