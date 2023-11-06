@@ -270,3 +270,16 @@ function task_24(r,side,steps,f)
         end
     end
 end
+
+function labirint!(r)
+    if !ismarker(r)
+        putmarker!(r)
+        for side in (Nord,West,Sud,Ost)
+            if !isborder(r,side)
+                move!(r,side)
+                labirint!(r)
+                move!(r,rever(side))
+            end
+        end
+    end
+end
