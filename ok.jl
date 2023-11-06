@@ -291,3 +291,10 @@ function sumelem(array::Vector)
     end
     return s
 end
+
+function summ(array::AbstractVector{T},s::T=0) where T
+    if length(array)==0
+        return s
+    end
+    return summ(@view(array[1:end-1]),s+array[end])
+end
