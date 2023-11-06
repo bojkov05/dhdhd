@@ -283,3 +283,11 @@ function labirint!(r)
         end
     end
 end
+
+function sumelem(array::Vector)
+    s=zero(eltype(array))
+    for a in array #i in eachindex(array)
+        s += a # array[i]
+    end
+    return s
+end
